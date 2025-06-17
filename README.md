@@ -5,7 +5,7 @@ AgriMart is a dynamic e-commerce platform for farm-to-table transactions, develo
 
 ## Live Demo
 
-Check out the live demo of AgriMart: [AgriMart Live Demo](https://agrimart.vercel.app/)
+Check out the live demo of AgriMart: [AgriMart Live Demo](https://agrimart.app/)
 
 ## Features
 - **Farm-to-Table Ordering**: Customers can select fresh, organic farm produce.
