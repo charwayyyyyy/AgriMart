@@ -1,33 +1,33 @@
-'use client';
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+"use client";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 const categories = [
-  { id: 'all', name: 'All Products' },
-  { id: 'vegetables', name: 'Vegetables', icon: '🥬' },
-  { id: 'fruits', name: 'Fruits', icon: '🍎' },
-  { id: 'grains', name: 'Grains & Cereals', icon: '🌾' },
-  { id: 'tubers', name: 'Tubers & Roots', icon: '🥔' },
-  { id: 'spices', name: 'Spices & Herbs', icon: '🌿' },
-  { id: 'livestock', name: 'Livestock', icon: '🐓' },
-  { id: 'processed', name: 'Processed Foods', icon: '🥘' },
+  { id: "all", name: "All Products" },
+  { id: "vegetables", name: "Vegetables", icon: "🥬" },
+  { id: "fruits", name: "Fruits", icon: "🍎" },
+  { id: "grains", name: "Grains & Cereals", icon: "🌾" },
+  { id: "tubers", name: "Tubers & Roots", icon: "🥔" },
+  { id: "spices", name: "Spices & Herbs", icon: "🌿" },
+  { id: "livestock", name: "Livestock", icon: "🐓" },
+  { id: "processed", name: "Processed Foods", icon: "🥘" },
 ];
 
 const regions = [
-  { id: 'all', name: 'All Regions' },
-  { id: 'ashanti', name: 'Ashanti Region' },
-  { id: 'brong', name: 'Bono Region' },
-  { id: 'central', name: 'Central Region' },
-  { id: 'eastern', name: 'Eastern Region' },
-  { id: 'greater-accra', name: 'Greater Accra' },
-  { id: 'northern', name: 'Northern Region' },
-  { id: 'volta', name: 'Volta Region' },
-  { id: 'western', name: 'Western Region' },
+  { id: "all", name: "All Regions" },
+  { id: "ashanti", name: "Ashanti Region" },
+  { id: "brong", name: "Bono Region" },
+  { id: "central", name: "Central Region" },
+  { id: "eastern", name: "Eastern Region" },
+  { id: "greater-accra", name: "Greater Accra" },
+  { id: "northern", name: "Northern Region" },
+  { id: "volta", name: "Volta Region" },
+  { id: "western", name: "Western Region" },
 ];
 
 export default function CategoryFilter({ onFilterChange }) {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [selectedRegion, setSelectedRegion] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedRegion, setSelectedRegion] = useState("all");
   const [showOrganic, setShowOrganic] = useState(false);
   const [priceRange, setPriceRange] = useState([0, 1000]);
 
@@ -90,10 +90,11 @@ export default function CategoryFilter({ onFilterChange }) {
             <motion.button
               key={category.id}
               onClick={() => handleCategoryChange(category.id)}
-              className={`flex items-center space-x-2 px-4 py-2 rounded-full text-sm ${selectedCategory === category.id
-                ? 'bg-green-100 text-green-800 font-medium'
-                : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
-                }`}
+              className={`flex items-center space-x-2 px-4 py-2 rounded-full text-sm ${
+                selectedCategory === category.id
+                  ? "bg-green-100 text-green-800 font-medium"
+                  : "bg-gray-50 text-gray-600 hover:bg-gray-100"
+              }`}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -136,7 +137,9 @@ export default function CategoryFilter({ onFilterChange }) {
 
       {/* Price Range */}
       <div>
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Price Range</h3>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">
+          Price Range
+        </h3>
         <div className="space-y-2">
           <input
             type="range"
