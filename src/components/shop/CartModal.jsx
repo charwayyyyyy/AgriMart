@@ -1,12 +1,21 @@
-'use client';
-import { Fragment } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
-import { XMarkIcon } from '@heroicons/react/24/outline';
-import { motion, AnimatePresence } from 'framer-motion';
+"use client";
+import { Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import { motion, AnimatePresence } from "framer-motion";
 
-export default function CartModal({ open, setOpen, cartItems, removeFromCart, updateQuantity }) {
-  const subtotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-  const deliveryFee = 10.00; // Fixed delivery fee in GH₵
+export default function CartModal({
+  open,
+  setOpen,
+  cartItems,
+  removeFromCart,
+  updateQuantity,
+}) {
+  const subtotal = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+  const deliveryFee = 10.0; // Fixed delivery fee in GH₵
   const total = subtotal + deliveryFee;
 
   return (
@@ -40,7 +49,9 @@ export default function CartModal({ open, setOpen, cartItems, removeFromCart, up
                   <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                     <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                       <div className="flex items-start justify-between">
-                        <Dialog.Title className="text-lg font-medium text-gray-900">Shopping Cart</Dialog.Title>
+                        <Dialog.Title className="text-lg font-medium text-gray-900">
+                          Shopping Cart
+                        </Dialog.Title>
                         <div className="ml-3 flex h-7 items-center">
                           <button
                             type="button"
@@ -56,7 +67,10 @@ export default function CartModal({ open, setOpen, cartItems, removeFromCart, up
 
                       <div className="mt-8">
                         <div className="flow-root">
-                          <ul role="list" className="-my-6 divide-y divide-gray-200">
+                          <ul
+                            role="list"
+                            className="-my-6 divide-y divide-gray-200"
+                          >
                             <AnimatePresence>
                               {cartItems.map((item) => (
                                 <motion.li
@@ -79,21 +93,40 @@ export default function CartModal({ open, setOpen, cartItems, removeFromCart, up
                                     <div>
                                       <div className="flex justify-between text-base font-medium text-gray-900">
                                         <h3>{item.name}</h3>
-                                        <p className="ml-4">GH₵{(item.price * item.quantity).toFixed(2)}</p>
+                                        <p className="ml-4">
+                                          GH₵
+                                          {(item.price * item.quantity).toFixed(
+                                            2
+                                          )}
+                                        </p>
                                       </div>
-                                      <p className="mt-1 text-sm text-gray-500">{item.farmer}</p>
+                                      <p className="mt-1 text-sm text-gray-500">
+                                        {item.farmer}
+                                      </p>
                                     </div>
                                     <div className="flex flex-1 items-end justify-between text-sm">
                                       <div className="flex items-center space-x-2">
                                         <button
-                                          onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}
+                                          onClick={() =>
+                                            updateQuantity(
+                                              item.id,
+                                              Math.max(1, item.quantity - 1)
+                                            )
+                                          }
                                           className="text-green-700 hover:text-green-800"
                                         >
                                           -
                                         </button>
-                                        <p className="text-gray-500">Qty {item.quantity}</p>
+                                        <p className="text-gray-500">
+                                          Qty {item.quantity}
+                                        </p>
                                         <button
-                                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                          onClick={() =>
+                                            updateQuantity(
+                                              item.id,
+                                              item.quantity + 1
+                                            )
+                                          }
                                           className="text-green-700 hover:text-green-800"
                                         >
                                           +
@@ -129,7 +162,9 @@ export default function CartModal({ open, setOpen, cartItems, removeFromCart, up
                         <p>Total</p>
                         <p>GH₵{total.toFixed(2)}</p>
                       </div>
-                      <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
+                      <p className="mt-0.5 text-sm text-gray-500">
+                        Shipping and taxes calculated at checkout.
+                      </p>
                       <div className="mt-6">
                         <motion.a
                           href="/checkout"
@@ -142,7 +177,7 @@ export default function CartModal({ open, setOpen, cartItems, removeFromCart, up
                       </div>
                       <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                         <p>
-                          or{' '}
+                          or{" "}
                           <button
                             type="button"
                             className="font-medium text-green-700 hover:text-green-800"
