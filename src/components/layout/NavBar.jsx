@@ -1,10 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Dialog } from "@headlessui/react";
 import {
   Bars3Icon,
   XMarkIcon,
   ShoppingCartIcon,
+  UserIcon,
 } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 
@@ -17,95 +18,209 @@ const navigation = [
 
 export default function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const toggleMobileMenu = useCallback(() => {
+    setMobileMenuOpen((prev) => !prev);
+  }, []);
 
   return (
-    <header className="bg-white">
-      <nav
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
-        aria-label="Global"
-      >
-        <div className="flex lg:flex-1">
-          <a href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">AgriMart</span>
-            <h1 className="text-2xl font-bold text-green-700">AgriMart</h1>
-          </a>
-        </div>
-        <div className="flex lg:hidden">
-          <button
-            type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-            onClick={() => setMobileMenuOpen(true)}
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-white shadow-lg" : "bg-white/95 backdrop-blur-md"
+      }`}
+    >
+      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo with subtle animation */}
+          <motion.div
+            className="flex-shrink-0"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
           >
-            <span className="sr-only">Open main menu</span>
-            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-          </button>
-        </div>
-        <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map((item) => (
+            <a href="/" className="flex items-center gap-2">
+              <span className="sr-only">AgriMart</span>
+              <svg
+                className="h-8 w-8 text-green-600"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 13L12 18L19 13M12 18V6M12 6L5 11L12 18M12 6L19 11L12 18"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent">
+                AgriMart
+              </h1>
+            </a>
+          </motion.div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex lg:items-center lg:space-x-1">
+            {navigation.map((item) => (
+              <motion.div
+                key={item.name}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <a
+                  href={item.href}
+                  className="relative px-4 py-2 text-sm font-medium text-gray-800 hover:text-green-700 transition-colors duration-200"
+                >
+                  {item.name}
+                  <span className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-green-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+                </a>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Desktop Action Buttons */}
+          <div className="hidden lg:flex lg:items-center lg:space-x-4">
             <motion.a
-              key={item.name}
-              href={item.href}
-              className="text-sm font-semibold leading-6 text-gray-900 hover:text-green-700"
+              href="/account"
+              className="p-2 rounded-full text-gray-700 hover:text-green-700 hover:bg-gray-100 transition-colors duration-200"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <UserIcon className="h-5 w-5" />
+            </motion.a>
+            <motion.a
+              href="/cart"
+              className="p-2 rounded-full text-gray-700 hover:text-green-700 hover:bg-gray-100 transition-colors duration-200 relative"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <ShoppingCartIcon className="h-5 w-5" />
+              <span className="absolute -top-1 -right-1 bg-green-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                3
+              </span>
+            </motion.a>
+            <motion.button
+              className="ml-2 px-4 py-2 rounded-md bg-gradient-to-r from-green-600 to-green-700 text-white text-sm font-medium shadow-sm hover:shadow-md transition-all duration-200"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              {item.name}
+              Sign In
+            </motion.button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="flex lg:hidden items-center space-x-4">
+            <motion.a
+              href="/cart"
+              className="p-2 text-gray-700 hover:text-green-700 relative"
+              whileTap={{ scale: 0.95 }}
+            >
+              <ShoppingCartIcon className="h-5 w-5" />
+              <span className="absolute -top-1 -right-1 bg-green-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                3
+              </span>
             </motion.a>
-          ))}
-        </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a
-            href="/cart"
-            className="text-sm font-semibold leading-6 text-gray-900"
-          >
-            <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
-          </a>
+            <button
+              type="button"
+              className="p-2 rounded-md text-gray-700 hover:text-green-700 hover:bg-gray-100 focus:outline-none transition-colors duration-200"
+              onClick={toggleMobileMenu}
+              aria-label="Toggle menu"
+            >
+              <Bars3Icon className="h-6 w-6" />
+            </button>
+          </div>
         </div>
       </nav>
+
+      {/* Mobile Menu */}
       <Dialog
         as="div"
         className="lg:hidden"
         open={mobileMenuOpen}
-        onClose={setMobileMenuOpen}
+        onClose={toggleMobileMenu}
       >
-        <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-          <div className="flex items-center justify-between">
-            <a href="/" className="-m-1.5 p-1.5">
-              <span className="sr-only">AgriMart</span>
-              <h1 className="text-2xl font-bold text-green-700">AgriMart</h1>
+        <div className="fixed inset-0 z-10 bg-black/30 backdrop-blur-sm" />
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-20 w-full max-w-xs overflow-y-auto bg-white shadow-xl transition-transform duration-300 ease-in-out">
+          <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+            <a href="/" className="flex items-center gap-2">
+              <svg
+                className="h-8 w-8 text-green-600"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 13L12 18L19 13M12 18V6M12 6L5 11L12 18M12 6L19 11L12 18"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <h1 className="text-xl font-bold bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent">
+                AgriMart
+              </h1>
             </a>
             <button
               type="button"
-              className="-m-2.5 rounded-md p-2.5 text-gray-700"
-              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 rounded-md text-gray-700 hover:text-green-700 hover:bg-gray-100"
+              onClick={toggleMobileMenu}
             >
-              <span className="sr-only">Close menu</span>
-              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+              <XMarkIcon className="h-6 w-6" />
             </button>
           </div>
-          <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-gray-500/10">
-              <div className="space-y-2 py-6">
-                {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-              <div className="py-6">
-                <a
-                  href="/cart"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Cart
-                </a>
-              </div>
-            </div>
+          <div className="px-6 py-4 space-y-1">
+            {navigation.map((item) => (
+              <motion.a
+                key={item.name}
+                href={item.href}
+                className="block py-3 px-4 rounded-lg text-base font-medium text-gray-800 hover:bg-gray-50 transition-colors duration-200"
+                whileTap={{ scale: 0.98 }}
+                onClick={toggleMobileMenu}
+              >
+                {item.name}
+              </motion.a>
+            ))}
+          </div>
+          <div className="px-6 py-4 border-t border-gray-100">
+            <motion.a
+              href="/account"
+              className="flex items-center py-3 px-4 rounded-lg text-base font-medium text-gray-800 hover:bg-gray-50 transition-colors duration-200"
+              whileTap={{ scale: 0.98 }}
+              onClick={toggleMobileMenu}
+            >
+              <UserIcon className="h-5 w-5 mr-3 text-gray-600" />
+              My Account
+            </motion.a>
+            <motion.a
+              href="/cart"
+              className="flex items-center py-3 px-4 rounded-lg text-base font-medium text-gray-800 hover:bg-gray-50 transition-colors duration-200"
+              whileTap={{ scale: 0.98 }}
+              onClick={toggleMobileMenu}
+            >
+              <ShoppingCartIcon className="h-5 w-5 mr-3 text-gray-600" />
+              Cart
+              <span className="ml-auto bg-green-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                3
+              </span>
+            </motion.a>
+          </div>
+          <div className="px-6 py-4">
+            <motion.button
+              className="w-full py-2.5 rounded-md bg-gradient-to-r from-green-600 to-green-700 text-white font-medium shadow-sm hover:shadow-md transition-all duration-200"
+              whileTap={{ scale: 0.98 }}
+            >
+              Sign In
+            </motion.button>
           </div>
         </Dialog.Panel>
       </Dialog>
