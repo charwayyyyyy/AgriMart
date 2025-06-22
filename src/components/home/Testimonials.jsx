@@ -1,6 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import anime from 'animejs';
+import { animateWithWAAPI } from '../../utils/animations';
 
 const testimonials = [
   {
@@ -70,6 +72,20 @@ export default function Testimonials() {
       opacity: 0,
     }),
   };
+
+  const testimonialRef = useRef(null);
+
+  useEffect(() => {
+    if (testimonialRef.current) {
+      animateWithWAAPI(testimonialRef.current, [
+        { opacity: 0, transform: 'translateY(20px)' },
+        { opacity: 1, transform: 'translateY(0)' }
+      ], {
+        duration: 500,
+        easing: 'ease-out'
+      });
+    }
+  }, [currentIndex]);
 
   const swipeConfidenceThreshold = 10000;
   const swipePower = (offset, velocity) => {
