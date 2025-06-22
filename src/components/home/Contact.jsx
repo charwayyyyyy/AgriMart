@@ -1,7 +1,6 @@
 "use client";
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import anime from 'animejs';
 import { animateWithWAAPI } from '../../utils/animations';
 
 export default function Contact() {
