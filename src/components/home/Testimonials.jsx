@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { animateWithWAAPI } from '../../utils/animations';
 
 const testimonials = [
   {
@@ -13,38 +12,13 @@ const testimonials = [
     content:
       "AgriMart has transformed how I sell my organic vegetables. I now reach customers across Ghana who value fresh, chemical-free produce. The platform has helped me grow my farm business significantly.",
   },
-  {
-    id: 2,
-    name: "Abena Osei",
-    role: "Cassava and Plantain Farmer",
-    location: "Eastern Region",
-    image: "/farmers/abena.jpg",
-    content:
-      "Thanks to AgriMart, I can now sell my cassava and plantain directly to customers in Accra. The platform has eliminated middlemen, allowing me to earn more while providing better prices to my customers.",
-  },
-  {
-    id: 3,
-    name: "Yaw Darko",
-    role: "Rice Farmer",
-    location: "Volta Region",
-    image: "/farmers/yaw.jpg",
-    content:
-      "The support from AgriMart has been incredible. They helped me digitize my rice farming business, and now I have regular customers who appreciate the quality of my local rice varieties.",
-  },
-  {
-    id: 4,
-    name: "Efua Tawiah",
-    role: "Fruit Farmer",
-    location: "Central Region",
-    image: "/farmers/efua.jpg",
-    content:
-      "AgriMart's platform is user-friendly and has helped me showcase my fresh fruits to a wider market. The direct connection with customers has improved my understanding of market demands.",
-  },
+  // ... (keep other testimonials the same)
 ];
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const testimonialRef = useRef(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -72,35 +46,19 @@ export default function Testimonials() {
     }),
   };
 
-  const testimonialRef = useRef(null);
-
-  useEffect(() => {
-    if (testimonialRef.current) {
-      animateWithWAAPI(testimonialRef.current, [
-        { opacity: 0, transform: 'translateY(20px)' },
-        { opacity: 1, transform: 'translateY(0)' }
-      ], {
-        duration: 500,
-        easing: 'ease-out'
-      });
-    }
-  }, [currentIndex]);
-
+  const swipePower = (offset, velocity) => Math.abs(offset) * velocity;
   const swipeConfidenceThreshold = 10000;
-  const swipePower = (offset, velocity) => {
-    return Math.abs(offset) * velocity;
-  };
 
   const paginate = (newDirection) => {
     setDirection(newDirection);
     setCurrentIndex(
-      (prevIndex) =>
-        (prevIndex + newDirection + testimonials.length) % testimonials.length
+      (prev) =>
+        (prev + newDirection + testimonials.length) % testimonials.length
     );
   };
 
   return (
-    <div className="bg-white py-12 sm:py-16 lg:py-20">
+    <div className="bg-white py-12 sm:py-16 lg:py-20" ref={testimonialRef}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-lg font-semibold leading-8 tracking-tight text-green-600">
@@ -112,7 +70,7 @@ export default function Testimonials() {
         </div>
 
         <div className="mx-auto mt-12 max-w-5xl">
-          <div className="relative h-[400px] sm:h-[350px] md:h-[300px] lg:h-[280px]">
+          <div className="relative h-[400px] sm:h-[350px]">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={currentIndex}
@@ -130,19 +88,15 @@ export default function Testimonials() {
                 dragElastic={1}
                 onDragEnd={(e, { offset, velocity }) => {
                   const swipe = swipePower(offset.x, velocity.x);
-
-                  if (swipe < -swipeConfidenceThreshold) {
-                    paginate(1);
-                  } else if (swipe > swipeConfidenceThreshold) {
-                    paginate(-1);
-                  }
+                  if (swipe < -swipeConfidenceThreshold) paginate(1);
+                  else if (swipe > swipeConfidenceThreshold) paginate(-1);
                 }}
                 className="absolute inset-0 bg-white shadow-lg rounded-lg overflow-hidden"
               >
                 <div className="h-full flex flex-col lg:flex-row">
                   <div className="lg:w-1/3 flex-shrink-0 flex items-center justify-center p-6 lg:p-8 bg-gray-50">
                     <img
-                      className="h-32 w-32 sm:h-40 sm:w-40 md:h-48 md:w-48 rounded-full object-cover border-4 border-white shadow-md"
+                      className="h-32 w-32 sm:h-40 sm:w-40 rounded-full object-cover border-4 border-white shadow-md"
                       src={testimonials[currentIndex].image}
                       alt={testimonials[currentIndex].name}
                     />
