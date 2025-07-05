@@ -1,9 +1,15 @@
-import { Inter } from 'next/font/google';
+import { Inter, Poppins } from 'next/font/google';
+import ReduxProvider from '@/components/providers/ReduxProvider';
 import NavBar from '@/components/layout/NavBar';
 import Footer from '@/components/layout/Footer';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const poppins = Poppins({
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-poppins',
+});
 
 export const metadata = {
   title: 'AgriMart - Fresh from Ghana\'s Finest Farms',
@@ -13,13 +19,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <body className={inter.className}>
-        <div className="flex flex-col min-h-screen">
-          <NavBar />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-        </div>
+        <ReduxProvider>
+          <div className="flex flex-col min-h-screen bg-[#FFFDF7]">
+            <NavBar />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </div>
+        </ReduxProvider>
       </body>
     </html>
   );

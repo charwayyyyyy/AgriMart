@@ -1,8 +1,16 @@
 "use client";
+import { useDispatch } from 'react-redux';
 import { motion } from "framer-motion";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { addToCart } from '@/redux/features/cartSlice';
 
 export default function ProductCard({ product }) {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+  };
+
   return (
     <motion.div
       className="group relative bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 flex flex-col h-full"
@@ -25,37 +33,38 @@ export default function ProductCard({ product }) {
         )}
       </div>
 
-      {/* Content Container */}
-      <div className="p-4 flex flex-col flex-grow">
-        {/* Top Row - Name and Price */}
-        <div className="flex justify-between items-start gap-2 mb-2">
-          <h3 className="text-sm font-medium text-gray-900 line-clamp-2 flex-grow">
-            {product.name}
-          </h3>
-          <p className="text-lg font-bold text-green-700 whitespace-nowrap pl-2">
+      {/* Product Info */}
+      <div className="flex-1 p-4 flex flex-col">
+        <h3 className="text-lg font-semibold text-gray-900 font-poppins">{product.name}</h3>
+        <p className="mt-1 text-sm text-gray-500">{product.description}</p>
+        
+        <div className="mt-2 flex items-center space-x-2">
+          <img
+            src="/ghana-pattern.svg"
+            alt="Location icon"
+            className="h-4 w-4"
+          />
+          <span className="text-sm text-gray-600">{product.location}</span>
+        </div>
+
+        <div className="mt-2 flex items-center space-x-2">
+          <span className="text-sm text-gray-600">Farmer:</span>
+          <span className="text-sm font-medium text-gray-900">{product.farmer}</span>
+        </div>
+
+        <div className="mt-4 flex items-center justify-between">
+          <span className="text-xl font-bold text-gray-900 font-poppins">
             GH₵{product.price.toFixed(2)}
-          </p>
+          </span>
+          <motion.button
+            onClick={handleAddToCart}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center justify-center p-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-colors duration-200"
+          >
+            <ShoppingCartIcon className="h-5 w-5" />
+          </motion.button>
         </div>
-
-        {/* Description */}
-        <p className="text-xs text-gray-500 line-clamp-3 mb-3 flex-grow">
-          {product.description}
-        </p>
-
-        {/* Farmer and Location */}
-        <div className="flex justify-between items-center text-xs text-gray-600 mb-4">
-          <p className="truncate max-w-[45%]">{product.farmer}</p>
-          <p className="truncate max-w-[45%] text-right">{product.location}</p>
-        </div>
-
-        {/* Add to Cart Button */}
-        <motion.button
-          className="w-full bg-green-700 text-white px-4 py-2 rounded-md flex items-center justify-center space-x-2 hover:bg-green-800 transition-colors text-sm"
-          whileTap={{ scale: 0.95 }}
-        >
-          <ShoppingCartIcon className="h-4 w-4" />
-          <span>Add to Cart</span>
-        </motion.button>
       </div>
     </motion.div>
   );

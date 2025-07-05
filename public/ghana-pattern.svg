@@ -1,0 +1,29 @@
+<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Adinkra symbol: Gye Nyame (Supremacy of God) -->
+    <path id="gye-nyame" d="M15,15 C15,25 25,25 25,15 C25,5 15,5 15,15 M20,10 L20,20" />
+    
+    <!-- Kente-inspired pattern -->
+    <pattern id="kente" patternUnits="userSpaceOnUse" width="20" height="20">
+      <rect width="10" height="10" fill="#006B3F" opacity="0.1" />
+      <rect x="10" y="10" width="10" height="10" fill="#FCD116" opacity="0.1" />
+    </pattern>
+  </defs>
+  
+  <!-- Background pattern -->
+  <rect width="60" height="60" fill="url(#kente)" />
+  
+  <!-- Adinkra symbols placement -->
+  <g fill="none" stroke="#CE1126" stroke-width="1" opacity="0.2">
+    <use href="#gye-nyame" transform="translate(0,0)" />
+    <use href="#gye-nyame" transform="translate(30,0)" />
+    <use href="#gye-nyame" transform="translate(0,30)" />
+    <use href="#gye-nyame" transform="translate(30,30)" />
+  </g>
+  
+  <!-- Decorative lines -->
+  <g stroke="#006B3F" stroke-width="0.5" opacity="0.1">
+    <line x1="0" y1="30" x2="60" y2="30" />
+    <line x1="30" y1="0" x2="30" y2="60" />
+  </g>
+</svg>

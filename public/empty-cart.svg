@@ -1,0 +1,20 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="120" cy="120" r="120" fill="#F0FDF4" />
+
+  <!-- Market basket -->
+  <path d="M80 100 L160 100 L150 160 L90 160 Z" fill="#FEF3C7" stroke="#B45309" stroke-width="2" />
+  <path d="M90 100 C90 70 150 70 150 100" stroke="#B45309" stroke-width="2" fill="none" />
+
+  <!-- Vegetables -->
+  <circle cx="105" cy="85" r="8" fill="#22C55E" /> <!-- Green pepper -->
+  <circle cx="125" cy="90" r="10" fill="#EF4444" /> <!-- Tomato -->
+  <path d="M135 80 Q140 75 145 80 Q150 85 145 90 Q140 95 135 90 Q130 85 135 80" fill="#F59E0B" /> <!-- Mango -->
+
+  <!-- Adinkra symbol: Sankofa (Learn from the past) -->
+  <path d="M120 140 Q130 130 120 120 Q110 110 120 100" stroke="#166534" stroke-width="2" fill="none" />
+  <circle cx="120" cy="140" r="3" fill="#166534" />
+
+  <!-- Text -->
+  <text x="120" y="180" text-anchor="middle" font-family="Poppins" font-size="12" fill="#166534">Your basket is empty</text>
+</svg>
