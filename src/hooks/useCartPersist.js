@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCartItems, selectCartItems } from '../redux/features/cartSlice';
+import { addToCart, selectCartItems } from '../redux/features/cartSlice';
 
 export const useCartPersist = () => {
   const dispatch = useDispatch();
@@ -12,7 +12,10 @@ export const useCartPersist = () => {
     if (savedCart) {
       try {
         const parsedCart = JSON.parse(savedCart);
-        dispatch(setCartItems(parsedCart));
+        // Add each item individually to maintain cart state consistency
+        parsedCart.forEach(item => {
+          dispatch(addToCart(item));
+        });
       } catch (error) {
         console.error('Error loading cart from localStorage:', error);
         localStorage.removeItem('agrimart-cart');
