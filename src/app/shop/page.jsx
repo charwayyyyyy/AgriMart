@@ -5,7 +5,7 @@ import ProductCard from '@/components/shop/ProductCard';
 import SearchBar from '@/components/shop/SearchBar';
 import CategoryFilter from '@/components/shop/CategoryFilter';
 
-// Sample products data with Ghanaian context
+// sample products data
 const products = [
   {
     id: '1',
@@ -40,7 +40,8 @@ const products = [
     organic: true,
     category: 'fruits',
   },
-  // Add more products as needed
+
+  // add more products
 ];
 
 export default function ShopPage() {

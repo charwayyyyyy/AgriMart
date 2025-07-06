@@ -6,13 +6,13 @@ export const useCartPersist = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
 
-  // Load cart from localStorage on mount
+  // loading cart from localStorage on mount
   useEffect(() => {
     const savedCart = localStorage.getItem('agrimart-cart');
     if (savedCart) {
       try {
         const parsedCart = JSON.parse(savedCart);
-        // Add each item individually to maintain cart state consistency
+        // add each item individually to maintain cart state consistency
         parsedCart.forEach(item => {
           dispatch(addToCart(item));
         });
@@ -23,7 +23,7 @@ export const useCartPersist = () => {
     }
   }, [dispatch]);
 
-  // Save cart to localStorage whenever it changes
+  // save cart to localStorage whenever it changes
   useEffect(() => {
     try {
       localStorage.setItem('agrimart-cart', JSON.stringify(cartItems));
@@ -32,5 +32,5 @@ export const useCartPersist = () => {
     }
   }, [cartItems]);
 
-  return null; // This hook doesn't need to return anything
+  return null; 
 };

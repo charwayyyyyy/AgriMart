@@ -12,6 +12,15 @@ const testimonials = [
     content:
       "AgriMart has transformed how I sell my organic vegetables. I now reach customers across Ghana who value fresh, chemical-free produce. The platform has helped me grow my farm business significantly.",
   },
+  {
+    id: 1,
+    name: "Maud Susu",
+    role: "Organic Vegetable Farmer",
+    location: "Volta Region",
+    image: "/farmers/maud.jpg",
+    content:
+      "AgriMart has transformed how I sell my organic vegetables. I now reach customers across Ghana who value fresh, chemical-free produce. The platform has helped me grow my farm business significantly.",
+  },
   // ... (keep other testimonials the same)
 ];
 

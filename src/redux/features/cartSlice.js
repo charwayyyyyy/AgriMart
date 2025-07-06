@@ -4,7 +4,7 @@ const initialState = {
   items: [],
   isOpen: false,
   subtotal: 0,
-  deliveryFee: 10.0, // Fixed delivery fee in GH₵
+  deliveryFee: 10.0, // the fixed delivery fee in GH₵
 };
 
 export const cartSlice = createSlice({

@@ -8,7 +8,7 @@ export default function SearchBar({ onSearch }) {
   const [suggestions, setSuggestions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Example suggestions based on Ghanaian produce
+  // Example suggestions 
   const sampleSuggestions = [
     'Plantain',
     'Cassava',
@@ -28,7 +28,7 @@ export default function SearchBar({ onSearch }) {
 
     if (value.length > 0) {
       setIsLoading(true);
-      // Simulate API call with setTimeout
+      // simulating API call with setTimeout
       setTimeout(() => {
         const filtered = sampleSuggestions.filter(item =>
           item.toLowerCase().includes(value.toLowerCase())

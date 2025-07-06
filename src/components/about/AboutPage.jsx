@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image"; // Using Next.js Image component instead of img
+import Image from "next/image"; // using Next.js Image component instead of img
 
 const ValueCard = ({ symbol, title, description }) => {
   return (
@@ -112,6 +112,8 @@ export default function AboutPage() {
     { year: "2020", event: "Reached 100+ partner farmers" },
     { year: "2021", event: "Launched mobile app for easier ordering" },
     { year: "2022", event: "Served over 10,000 customers nationwide" },
+    { year: "2023", event: ""},
+    { year: "2023", event: ""}
   ];
 
   return (
@@ -141,8 +143,8 @@ export default function AboutPage() {
             </p>
             <p className="text-gray-600">
               The Adinkra symbol of 'Sankofa' - learning from the past to build
-              the future - guides our approach as we blend tradition with
-              innovation.
+              the future - guides our approach as we blend customs and tradition with
+              modernity and innovation.
             </p>
           </div>
           <div className="bg-green-100 rounded-lg overflow-hidden aspect-video relative">

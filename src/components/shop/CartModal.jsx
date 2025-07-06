@@ -18,12 +18,12 @@ export default function CartModal({ open, setOpen }) {
   const total = subtotal + deliveryFee;
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
-  // Initialize custom hooks
+  // initializing custom hooks
   const { animateCartItem, animateRemoveFromCart } = useCartAnimation();
   const { notifyRemoveFromCart, NotificationComponent } = useCartNotification();
   useCartPersist(); // Initialize cart persistence
 
-  // Refs for animation targets
+  // for animation targets
   const cartItemRefs = useRef({});
 
   const handleQuantityChange = (id, newQuantity) => {

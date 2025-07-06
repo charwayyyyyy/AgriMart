@@ -8,7 +8,7 @@ const categories = [
   { id: "fruits", name: "Fruits", icon: "🍎" },
   { id: "grains", name: "Grains & Cereals", icon: "🌾" },
   { id: "tubers", name: "Tubers & Roots", icon: "🥔" },
-  { id: "spices", name: "Spices & Herbs", icon: "🌿" },
+  { id: "spices & herbs", name: "Spices & Herbs", icon: "🌿" },
   { id: "livestock", name: "Livestock", icon: "🐓" },
   { id: "processed", name: "Processed Foods", icon: "🥘" },
 ];

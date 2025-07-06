@@ -3,19 +3,19 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Testimonials from "@/components/home/Testimonials";
 
-// Sample featured products
+// sample featured products
 const featuredProducts = [
   {
     id: 1,
     name: "Premium Cocoa Beans",
     price: 150.0,
-    image: "/products/cocoa.jpg",
+    image: "/products/cocoabeans.jpg",
     category: "Cash Crops",
     region: "Western Region",
   },
   {
     id: 2,
-    name: "Organic Plantain Bunch",
+    name: "Organic Plantain",
     price: 25.0,
     image: "/products/plantain.jpg",
     category: "Fruits",
@@ -29,6 +29,24 @@ const featuredProducts = [
     category: "Vegetables",
     region: "Volta Region",
   },
+  {
+    id: 4,
+    name: "Fresh Kontomire",
+    price: 10.0,
+    image: "/products/kontomire.jpg",
+    category: "Vegetables",
+    region: "Eastern Region",
+  },
+  {
+    id: 5,
+    name: "Yam Tubers",
+    price: 10.0,
+    image: "/products/yam-tubers.jpg",
+    category: "Vegetables",
+    region: "Greater Accea Region",
+  },
+
+  //add more products
 ];
 
 export default function Home() {
@@ -142,7 +160,7 @@ export default function Home() {
               Featured Products
             </h2>
             <p className="mt-4 text-lg leading-8 text-gray-600">
-              Discover the finest agricultural products from across Ghana
+              Discover the finest agricultural produces from farms across Ghana
             </p>
           </div>
 
@@ -201,6 +219,7 @@ export default function Home() {
 
       {/* Testimonials Section */}
       <Testimonials />
+      
     </main>
   );
 }

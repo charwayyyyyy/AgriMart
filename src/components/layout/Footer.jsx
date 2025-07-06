@@ -50,7 +50,7 @@ export default function Footer() {
               {footerNavigation.connect.map((item) => (
                 <a key={item.name} href={item.href} className="text-gray-300 hover:text-white">
                   <span className="sr-only">{item.name}</span>
-                  {/* Add social icons here */}
+                  {/* aadd the social icons here */}
                 </a>
               ))}
             </div>
