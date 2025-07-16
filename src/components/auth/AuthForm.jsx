@@ -6,9 +6,10 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'fire
 import { auth } from '@/firebase/config';
 import { loginStart, loginSuccess, loginFailure } from '@/redux/features/authSlice';
 
+// Demo credentials that work with our Firebase configuration
 const demoCredentials = {
   email: 'demo@agrimart.com',
-  password: 'demo123'
+  password: 'Demo123!' // More secure password that meets Firebase requirements
 };
 
 export default function AuthForm() {

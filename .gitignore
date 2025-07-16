@@ -30,8 +30,16 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files
 .env*
+!.env.example
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-*
+*.swp
+*.swo
 
 # vercel
 .vercel
