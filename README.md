@@ -97,3 +97,36 @@ npm run start       # Start production server
 - Write unit tests for critical functionality
 - Document API endpoints and data models
 - See [Contributing Guidelines](./CONTRIBUTING.md) for detailed standards
+
+## Deployment
+
+### Vercel Deployment
+
+This project is configured for deployment on Vercel with special handling for dependency conflicts:
+
+- **vercel.json**: Contains build configuration for Vercel
+- **.npmrc**: Sets `legacy-peer-deps=true` to handle peer dependency conflicts
+- **Dependency Management**: React 18 is used to ensure compatibility with testing libraries
+
+For detailed deployment instructions, see the [Deployment Guide](./docs/DEPLOYMENT.md).
+
+### CI/CD with GitHub Actions
+
+The project includes a GitHub Actions workflow for continuous integration and deployment:
+
+- **Automated Testing**: Runs linting and tests on every push and pull request
+- **Automated Deployment**: Deploys to Vercel when changes are pushed to the main branch
+
+See the [GitHub Actions Setup Guide](./docs/GITHUB_ACTIONS.md) for configuration details.
+
+### Troubleshooting Deployment
+
+If you encounter dependency conflicts during deployment:
+
+1. Run the dependency checker script: `npm run check-deps`
+2. Ensure React version is set to 18.x in package.json
+3. Use the `--legacy-peer-deps` flag when installing dependencies
+4. Check that @types/react and @types/react-dom versions match your React version
+5. Verify that the postinstall script is present in package.json
+
+The dependency checker script (`scripts/check-dependencies.js`) will analyze your package.json and configuration files to identify potential issues.
