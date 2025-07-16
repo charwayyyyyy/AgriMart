@@ -1,7 +1,7 @@
 
 # AgriMart - Ghanaian Farm-to-Table E-Commerce
 
-AgriMart is a dynamic e-commerce platform for farm-to-table transactions, developed as part of a personal project. It offers a unique shopping experience for customers, enhanced by a focus on farm produce and a local theme.
+AgriMart is a Ghanaian based e-commerce platform for farm-to-table transactions, developed as part of a personal project. It offers a unique shopping experience for customers, enhanced by a focus on farm produce and the local Ghanaian theme.
 
 ## Live Demo
 
