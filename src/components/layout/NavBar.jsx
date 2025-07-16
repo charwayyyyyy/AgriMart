@@ -17,6 +17,7 @@ import CartModal from '../shop/CartModal';
 const navigation = [
   { name: "Home", href: "/" },
   { name: "Shop", href: "/shop" },
+  { name: "Education", href: "/education" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];

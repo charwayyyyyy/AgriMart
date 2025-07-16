@@ -22,3 +22,16 @@ Check out the live demo of AgriMart: [AgriMart Live Demo](https://agri-mart-phi.
 - **Redux Toolkit** for state management.
 - **Stripe API** for secure payment processing.
 - **Framer Motion** for smooth animations and interactivity.
+
+## Project Structure
+
+
+### Pages
+- **Home** - Landing page with featured products
+- **Shop** - Browse and filter products
+- **Cart** - View and manage shopping cart
+- **Wishlist** - Save products for later
+- **Orders** - Track order history
+- **Education** - Farming resources and guides
+- **Checkout** - Complete purchases
+- **Account** - User profile management

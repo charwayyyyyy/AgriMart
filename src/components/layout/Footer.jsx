@@ -20,6 +20,12 @@ const footerNavigation = {
     { name: 'Wishlist', href: '/wishlist' },
     { name: 'Newsletter', href: '#' },
   ],
+  resources: [
+    { name: 'Farmer Education', href: '/education' },
+    { name: 'Cropping Calendar', href: '/education?tab=calendar' },
+    { name: 'SMS Reminders', href: '/education?tab=sms' },
+    { name: 'Farming Tips', href: '/education/sustainable-farming' },
+  ],
   connect: [
     { name: 'Facebook', href: '#' },
     { name: 'Instagram', href: '#' },
@@ -96,6 +102,20 @@ export default function Footer() {
                 </ul>
               </div>
               <div className="mt-10 md:mt-0">
+                <h3 className="text-sm font-semibold leading-6 text-white">Resources</h3>
+                <ul role="list" className="mt-6 space-y-4">
+                  {footerNavigation.resources.map((item) => (
+                    <li key={item.name}>
+                      <a href={item.href} className="text-sm leading-6 text-gray-300 hover:text-white">
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="md:grid md:grid-cols-2 md:gap-8 mt-10 md:mt-0">
+              <div>
                 <h3 className="text-sm font-semibold leading-6 text-white">Connect</h3>
                 <ul role="list" className="mt-6 space-y-4">
                   {footerNavigation.connect.map((item) => (

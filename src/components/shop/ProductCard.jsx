@@ -40,7 +40,7 @@ export default function ProductCard({ product }) {
         
         <div className="mt-2 flex items-center space-x-2">
           <img
-            src="/ghana-pattern.svg"
+            src="/images/icons/ghana-pattern.svg"
             alt="Location icon"
             className="h-4 w-4"
           />

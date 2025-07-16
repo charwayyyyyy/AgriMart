@@ -190,23 +190,35 @@ export default function CartModal({ open, setOpen }) {
                         </div>
                         <p className="text-sm text-ghana-green-600 text-center italic">Free delivery for orders above GH₵100</p>
                       </div>
-                      <div className="mt-6">
+                      <div className="mt-6 space-y-3">
                         {isAuthenticated ? (
                           cartItems.length > 0 ? (
-                            <Link href="/checkout">
-                              <motion.button
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                className="flex w-full items-center justify-center rounded-lg border-2 border-ghana-gold-400 bg-ghana-gold-500 px-6 py-3 text-base font-bold text-white shadow-md hover:bg-ghana-gold-600 hover:border-ghana-gold-500 transition-all duration-300"
-                                onClick={() => setOpen(false)}
-                              >
-                                Checkout
-                              </motion.button>
-                            </Link>
+                            <>
+                              <Link href="/cart">
+                                <motion.button
+                                  whileHover={{ scale: 1.02 }}
+                                  whileTap={{ scale: 0.98 }}
+                                  className="flex w-full items-center justify-center rounded-lg border-2 border-ghana-green-400 bg-ghana-green-500 px-6 py-3 text-base font-bold text-white shadow-md hover:bg-ghana-green-600 hover:border-ghana-green-500 transition-all duration-300"
+                                  onClick={() => setOpen(false)}
+                                >
+                                  View Cart
+                                </motion.button>
+                              </Link>
+                              <Link href="/checkout">
+                                <motion.button
+                                  whileHover={{ scale: 1.02 }}
+                                  whileTap={{ scale: 0.98 }}
+                                  className="flex w-full items-center justify-center rounded-lg border-2 border-ghana-gold-400 bg-ghana-gold-500 px-6 py-3 text-base font-bold text-white shadow-md hover:bg-ghana-gold-600 hover:border-ghana-gold-500 transition-all duration-300"
+                                  onClick={() => setOpen(false)}
+                                >
+                                  Checkout
+                                </motion.button>
+                              </Link>
+                            </>
                           ) : (
                             <div className="text-center space-y-4">
                               <img
-                                src="/empty-cart.svg"
+                                src="/images/icons/empty-cart.svg"
                                 alt="Empty Market Basket"
                                 className="mx-auto w-48 h-48"
                               />

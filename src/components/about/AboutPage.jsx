@@ -90,7 +90,7 @@ export default function AboutPage() {
 
   const team = [
     {
-      image: "/team1.jpg",
+      image: "/testimonial avatar.png",
       name: "Kwame Asante",
       role: "Founder & CEO",
     },
