@@ -2,20 +2,18 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '@/firebase/config';
 import { loginStart, loginSuccess, loginFailure } from '@/redux/features/authSlice';
 
-// Demo credentials that work with our Firebase configuration
+// Demo credentials for our simple auth system
 const demoCredentials = {
-  email: 'demo@agrimart.com',
-  password: 'Demo123!' // More secure password that meets Firebase requirements
+  username: 'demo',
+  password: 'AgriMart2023'
 };
 
 export default function AuthForm() {
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
-    email: '',
+    username: '',
     password: '',
   });
   
@@ -28,14 +26,21 @@ export default function AuthForm() {
     dispatch(loginStart());
 
     try {
-      const { email, password } = formData;
-      const authFunction = isLogin ? signInWithEmailAndPassword : createUserWithEmailAndPassword;
-      const { user } = await authFunction(auth, email, password);
+      const response = await fetch('/api/auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
       
-      dispatch(loginSuccess({
-        uid: user.uid,
-        email: user.email,
-      }));
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Authentication failed');
+      }
+      
+      dispatch(loginSuccess(data.user));
     } catch (error) {
       dispatch(loginFailure(error.message));
     }
@@ -44,15 +49,21 @@ export default function AuthForm() {
   const handleDemoLogin = async () => {
     dispatch(loginStart());
     try {
-      const { user } = await signInWithEmailAndPassword(
-        auth,
-        demoCredentials.email,
-        demoCredentials.password
-      );
-      dispatch(loginSuccess({
-        uid: user.uid,
-        email: user.email,
-      }));
+      const response = await fetch('/api/auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(demoCredentials),
+      });
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Authentication failed');
+      }
+      
+      dispatch(loginSuccess(data.user));
     } catch (error) {
       dispatch(loginFailure(error.message));
     }
@@ -83,16 +94,16 @@ export default function AuthForm() {
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm space-y-4">
             <div>
-              <label htmlFor="email" className="sr-only">Email address</label>
+              <label htmlFor="username" className="sr-only">Username</label>
               <input
-                id="email"
-                name="email"
-                type="email"
+                id="username"
+                name="username"
+                type="text"
                 required
                 className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm"
-                placeholder="Email address"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                placeholder="Username"
+                value={formData.username}
+                onChange={(e) => setFormData({ ...formData, username: e.target.value })}
               />
             </div>
             <div>

@@ -57,6 +57,7 @@ module.exports = {
         'slide-down': 'slideDown 0.5s ease-out',
         'fade-in': 'fadeIn 0.5s ease-out',
         'bounce-subtle': 'bounceSubtle 1s infinite',
+        'ping-once': 'ping 0.8s cubic-bezier(0, 0, 0.2, 1) 1',
       },
       keyframes: {
         slideUp: {
@@ -74,6 +75,10 @@ module.exports = {
         bounceSubtle: {
           '0%, 100%': { transform: 'translateY(-5%)' },
           '50%': { transform: 'translateY(0)' },
+        },
+        ping: {
+          '0%': { transform: 'scale(1)', opacity: '1' },
+          '75%, 100%': { transform: 'scale(2)', opacity: '0' },
         },
       },
     },

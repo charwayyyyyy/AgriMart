@@ -43,8 +43,15 @@ Check out the live demo of AgriMart: [AgriMart Live Demo](https://agri-mart-phi.
 ### Demo Login Credentials
 
 ```
-Email: demo@agrimart.com
-Password: Demo123!
+Username: demo
+Password: AgriMart2023
+```
+
+Alternatively, you can also use:
+
+```
+Username: admin
+Password: Admin2023
 ```
 
 ## Code Quality & Maintainability

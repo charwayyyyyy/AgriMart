@@ -32,8 +32,20 @@ export default function NavBar() {
 
   const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
-  const handleLogout = () => {
-    dispatch(logout());
+  const handleLogout = async () => {
+    try {
+      const response = await fetch('/api/auth', {
+        method: 'DELETE',
+      });
+      
+      if (!response.ok) {
+        throw new Error('Logout failed');
+      }
+      
+      dispatch(logout());
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
   };
 
   return (
@@ -57,6 +69,7 @@ export default function NavBar() {
                   <Link
                     key={item.name}
                     href={item.href}
+                    prefetch={true}
                     className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-700 hover:text-green-600 hover:border-green-600 transition-colors duration-200"
                   >
                     {item.name}
@@ -149,7 +162,8 @@ export default function NavBar() {
                       <Link
                         key={item.name}
                         href={item.href}
-                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                        prefetch={true}
+                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-green-600 transition-colors duration-200"
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         {item.name}

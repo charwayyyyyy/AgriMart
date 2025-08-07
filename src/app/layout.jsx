@@ -1,5 +1,6 @@
 import { Inter, Poppins } from 'next/font/google';
 import ReduxProvider from '@/components/providers/ReduxProvider';
+import AuthProvider from '@/components/providers/AuthProvider';
 import NavBar from '@/components/layout/NavBar';
 import Footer from '@/components/layout/Footer';
 import './globals.css';
@@ -22,11 +23,13 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <body className={inter.className}>
         <ReduxProvider>
-          <div className="flex flex-col min-h-screen bg-[#FFFDF7]">
-            <NavBar />
-            <main className="flex-grow">{children}</main>
-            <Footer />
-          </div>
+          <AuthProvider>
+            <div className="flex flex-col min-h-screen bg-[#FFFDF7]">
+              <NavBar />
+              <main className="flex-grow">{children}</main>
+              <Footer />
+            </div>
+          </AuthProvider>
         </ReduxProvider>
       </body>
     </html>
