@@ -3,12 +3,13 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function OrdersPage() {
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
   
   // Sample orders data
-  const [orders, setOrders] = useState([
+  const [orders] = useState([
     {
       id: 'ORD-2023-001',
       date: '2023-07-15',
@@ -92,9 +93,11 @@ export default function OrdersPage() {
 
         {orders.length === 0 ? (
           <div className="bg-white rounded-lg shadow-md p-8 text-center">
-            <img 
+            <Image 
               src="/images/icons/empty-cart.svg" 
               alt="No Orders" 
+              width={128}
+              height={128}
               className="w-32 h-32 mx-auto mb-4"
             />
             <h2 className="text-xl font-semibold text-ghana-green-700 mb-2">No Orders Yet</h2>
@@ -122,6 +125,14 @@ export default function OrdersPage() {
                 <div 
                   className="p-6 cursor-pointer"
                   onClick={() => toggleOrderDetails(order.id)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      toggleOrderDetails(order.id);
+                    }
+                  }}
+                  tabIndex="0"
+                  role="button"
+                  aria-expanded={expandedOrderId === order.id}
                 >
                   <div className="flex flex-wrap justify-between items-center">
                     <div>

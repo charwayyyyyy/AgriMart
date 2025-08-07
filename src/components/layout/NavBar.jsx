@@ -99,16 +99,23 @@ export default function NavBar() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="p-2 text-gray-600 hover:text-green-600 group-hover:text-green-600"
+                    aria-haspopup="true"
+                    aria-expanded="false"
                   >
                     <UserIcon className="h-6 w-6" />
                   </motion.button>
-                  <div className="absolute right-0 w-48 mt-2 py-2 bg-white rounded-lg shadow-xl hidden group-hover:block">
+                  <div 
+                    className="absolute right-0 w-48 mt-2 py-2 bg-white rounded-lg shadow-xl hidden group-hover:block"
+                    role="menu"
+                    aria-orientation="vertical"
+                  >
                     <div className="px-4 py-2 text-sm text-gray-700 border-b border-gray-100">
                       {user?.email}
                     </div>
                     <button
                       onClick={handleLogout}
                       className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600"
+                      role="menuitem"
                     >
                       Sign Out
                     </button>

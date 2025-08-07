@@ -103,7 +103,7 @@ export default function Footer() {
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
                 <h3 className="text-sm font-semibold leading-6 text-white">Shop</h3>
-                <ul role="list" className="mt-4 space-y-3">
+                <ul className="mt-4 space-y-3">
                   {footerNavigation.shop.map((item) => (
                     <motion.li 
                       key={item.name}
@@ -125,7 +125,7 @@ export default function Footer() {
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <h3 className="text-sm font-semibold leading-6 text-white">Company</h3>
-                <ul role="list" className="mt-4 space-y-3">
+                <ul className="mt-4 space-y-3">
                   {footerNavigation.company.map((item) => (
                     <motion.li 
                       key={item.name}
@@ -148,7 +148,7 @@ export default function Footer() {
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
                 <h3 className="text-sm font-semibold leading-6 text-white">Account</h3>
-                <ul role="list" className="mt-4 space-y-3">
+                <ul className="mt-4 space-y-3">
                   {footerNavigation.account.map((item) => (
                     <motion.li 
                       key={item.name}
@@ -170,7 +170,7 @@ export default function Footer() {
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
                 <h3 className="text-sm font-semibold leading-6 text-white">Resources</h3>
-                <ul role="list" className="mt-4 space-y-3">
+                <ul className="mt-4 space-y-3">
                   {footerNavigation.resources.map((item) => (
                     <motion.li 
                       key={item.name}

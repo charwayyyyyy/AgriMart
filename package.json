@@ -16,6 +16,7 @@
     "@heroicons/react": "^2.2.0",
     "@reduxjs/toolkit": "^1.9.7",
     "@stripe/stripe-js": "^2.4.0",
+    "@swc/helpers": "^0.5.17",
     "animejs": "^3.2.2",
     "firebase": "^10.14.1",
     "framer-motion": "^10.18.0",

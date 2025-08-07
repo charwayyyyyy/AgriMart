@@ -6,6 +6,7 @@ import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { addToCart, toggleCart } from '@/redux/features/cartSlice';
 import { useCartAnimation } from '@/hooks/useCartAnimation';
 import { useCartNotification } from '@/hooks/useCartNotification';
+import Image from 'next/image';
 
 export default function ProductCard({ product }) {
   const dispatch = useDispatch();
@@ -55,9 +56,11 @@ export default function ProductCard({ product }) {
     >
       {/* Image Container */}
       <div className="aspect-square w-full overflow-hidden bg-gray-100 relative">
-        <img
+        <Image
           src={product.imageUrl}
           alt={product.name}
+          width={500}
+          height={500}
           className="h-full w-full object-cover object-center group-hover:opacity-90 transition-opacity duration-300"
         />
         {product.organic && (
@@ -73,9 +76,11 @@ export default function ProductCard({ product }) {
         <p className="mt-1 text-sm text-gray-500">{product.description}</p>
         
         <div className="mt-2 flex items-center space-x-2">
-          <img
+          <Image
             src="/images/icons/ghana-pattern.svg"
             alt="Location icon"
+            width={16}
+            height={16}
             className="h-4 w-4"
           />
           <span className="text-sm text-gray-600">{product.location}</span>

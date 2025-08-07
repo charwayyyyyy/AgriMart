@@ -13,7 +13,7 @@ const testimonials = [
       "AgriMart has transformed how I sell my organic vegetables. I now reach customers across Ghana who value fresh, chemical-free produce. The platform has helped me grow my farm business significantly.",
   },
   {
-    id: 1,
+    id: 2,
     name: "Maud Susu",
     role: "Organic Vegetable Farmer",
     location: "Volta Region",
@@ -132,9 +132,9 @@ export default function Testimonials() {
           </div>
 
           <div className="mt-6 flex justify-center gap-x-2">
-            {testimonials.map((_, index) => (
+            {testimonials.map((testimonial, index) => (
               <button
-                key={index}
+                key={testimonial.id}
                 className={`h-2 w-8 sm:w-10 rounded-full transition-all duration-300 ${
                   index === currentIndex ? "bg-green-600" : "bg-gray-300"
                 }`}

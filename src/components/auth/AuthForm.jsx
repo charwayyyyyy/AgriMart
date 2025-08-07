@@ -81,7 +81,7 @@ export default function AuthForm() {
             {isLogin ? 'Welcome Back!' : 'Join AgriMart'}
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            {isLogin ? 'Access your farm-fresh products' : 'Start your farm-to-table journey'}
+            {isLogin ? "Access your farm-fresh products" : "Start your farm-to-table journey"}
           </p>
         </div>
 
@@ -150,12 +150,12 @@ export default function AuthForm() {
             onClick={() => setIsLogin(!isLogin)}
             className="text-sm text-green-600 hover:text-green-500"
           >
-            {isLogin ? 'Need an account? Sign up' : 'Already have an account? Sign in'}
+            {isLogin ? "Need an account? Sign up" : "Already have an account? Sign in"}
           </button>
         </div>
 
         <div className="mt-4 text-center text-xs text-gray-500">
-          <p>Protected by Ghana's leading farm-to-table marketplace</p>
+          <p>Protected by Ghana&apos;s leading farm-to-table marketplace</p>
         </div>
       </motion.div>
     </div>
