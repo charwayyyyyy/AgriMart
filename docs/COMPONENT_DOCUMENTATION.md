@@ -94,4 +94,4 @@ For consistency, structure your components as follows:
 
 - [JSDoc Documentation](https://jsdoc.app/)
 - [React Documentation](https://reactjs.org/docs/getting-started.html)
-- [Storybook](https://storybook.js.org/) for component documentation and testing
+- [Storybook](https://storybook.js.org/) for component documentation and visualization

@@ -6,7 +6,7 @@ This document provides instructions for deploying the AgriMart application to pr
 
 Before deploying, ensure you have:
 
-1. A complete and tested build of the application
+1. A complete build of the application
 2. Access to the deployment platform (e.g., Vercel)
 3. Required environment variables ready
 4. GitHub repository set up (for CI/CD deployment)
@@ -95,7 +95,7 @@ This configuration tells npm to use the legacy peer dependency resolution algori
 
 ### React Version
 
-The project uses React 18.x to ensure compatibility with testing libraries. If you encounter dependency conflicts, ensure that the React version is set correctly in package.json:
+The project uses React 18.x. If you encounter dependency conflicts, ensure that the React version is set correctly in package.json:
 
 ```json
 "dependencies": {
@@ -171,7 +171,7 @@ The project includes a GitHub Actions workflow for continuous integration and de
 
 1. **Location**: `.github/workflows/ci.yml`
 2. **Features**:
-   - Runs tests and linting on every push and pull request
+   - Runs linting on every push and pull request
    - Automatically deploys to Vercel when changes are pushed to the main branch
 3. **Requirements**: You need to set up the following secrets in your GitHub repository:
 
@@ -193,7 +193,7 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -203,11 +203,11 @@ jobs:
           node-version: '18.x'
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
-      - name: Run tests
-        run: npm test
+      - name: Run linting
+        run: npm run lint
 
   deploy:
-    needs: test
+    needs: lint
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:

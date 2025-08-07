@@ -62,10 +62,7 @@ This project follows best practices for code quality and maintainability:
 
 - **ESLint**: JavaScript and React linting (`.eslintrc.js`)
 - **Prettier**: Code formatting (`.prettierrc`)
-- **Jest**: Testing framework (`jest.config.js`, `jest.setup.js`)
 - **JSConfig**: Path aliases and IntelliSense support (`jsconfig.json`)
-- **Husky**: Git hooks for code quality (`.husky/pre-commit`)
-- **lint-staged**: Run linters on git staged files (`.lintstagedrc.js`)
 - **Contributing Guidelines**: Standards for contributors (`CONTRIBUTING.md`)
 - **Environment Variables**: Template for required variables (`.env.example`)
 
@@ -80,9 +77,7 @@ npm run lint        # Run ESLint
 npm run format      # Format code with Prettier
 npm run format:check # Check formatting without changing files
 
-# Testing
-npm run test        # Run tests
-npm run test:watch  # Run tests in watch mode
+
 
 # Production
 npm run build       # Build for production
@@ -94,7 +89,7 @@ npm run start       # Start production server
 - Use ESLint for code linting (`npm run lint`)
 - Follow the established folder structure for new features
 - Implement responsive design for all UI components
-- Write unit tests for critical functionality
+- Follow best practices for error handling and code quality
 - Document API endpoints and data models
 - See [Contributing Guidelines](./CONTRIBUTING.md) for detailed standards
 
@@ -106,7 +101,7 @@ This project is configured for deployment on Vercel with special handling for de
 
 - **vercel.json**: Contains build configuration for Vercel
 - **.npmrc**: Sets `legacy-peer-deps=true` to handle peer dependency conflicts
-- **Dependency Management**: React 18 is used to ensure compatibility with testing libraries
+- **Dependency Management**: React 18 is used for optimal compatibility
 
 For detailed deployment instructions, see the [Deployment Guide](./docs/DEPLOYMENT.md).
 
@@ -114,7 +109,7 @@ For detailed deployment instructions, see the [Deployment Guide](./docs/DEPLOYME
 
 The project includes a GitHub Actions workflow for continuous integration and deployment:
 
-- **Automated Testing**: Runs linting and tests on every push and pull request
+- **Automated Linting**: Runs linting on every push and pull request
 - **Automated Deployment**: Deploys to Vercel when changes are pushed to the main branch
 
 See the [GitHub Actions Setup Guide](./docs/GITHUB_ACTIONS.md) for configuration details.

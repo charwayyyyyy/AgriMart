@@ -20,13 +20,11 @@ npm run check-deps
 
 1. **React Compatibility**:
    - Verifies React and React DOM versions match
-   - Checks if React version is compatible with testing libraries
 
 2. **React Types Compatibility**:
    - Ensures @types/react and @types/react-dom versions match React version
 
-3. **Testing Library Compatibility**:
-   - Checks if @testing-library/react is compatible with your React version
+
 
 4. **Configuration Files**:
    - Verifies .npmrc has legacy-peer-deps=true
@@ -53,7 +51,7 @@ The script provides color-coded output with:
 Checking React compatibility:
 - React: ^18.2.0
 - React DOM: ^18.2.0
-✓ React 18.x is compatible with most testing libraries
+
 ✓ React and React DOM versions are compatible
 
 Checking React types compatibility:
@@ -61,9 +59,7 @@ Checking React types compatibility:
 - @types/react-dom: ^18.2.0
 ✓ React types versions are compatible with React
 
-Checking Testing Library compatibility:
-- @testing-library/react: ^14.0.0
-✓ @testing-library/react should be compatible with React 18.x
+
 
 Checking configuration files:
 ✓ .npmrc file exists with legacy-peer-deps=true

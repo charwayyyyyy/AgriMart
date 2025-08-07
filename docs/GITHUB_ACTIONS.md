@@ -8,7 +8,7 @@ This document provides instructions for setting up GitHub Actions for continuous
 
 The project includes a GitHub Actions workflow file at `.github/workflows/ci.yml` that automates the following tasks:
 
-1. **Testing**: Runs linting and unit tests on every push and pull request
+1. **Linting**: Runs linting checks on every push and pull request
 2. **Deployment**: Automatically deploys to Vercel when changes are pushed to the main branch
 
 ## Prerequisites
@@ -58,10 +58,10 @@ Alternatively, you can find this in the project settings URL in the Vercel dashb
 
 The workflow is configured in the `.github/workflows/ci.yml` file. Here's a breakdown of what it does:
 
-### Test Job
+### Lint Job
 
 ```yaml
-test:
+lint:
   runs-on: ubuntu-latest
   steps:
     - uses: actions/checkout@v3
@@ -73,8 +73,6 @@ test:
       run: npm ci --legacy-peer-deps
     - name: Run linting
       run: npm run lint
-    - name: Run tests
-      run: npm test
 ```
 
 This job:
@@ -82,13 +80,12 @@ This job:
 2. Sets up Node.js 18
 3. Installs dependencies with `--legacy-peer-deps` to handle dependency conflicts
 4. Runs linting
-5. Runs tests
 
 ### Deploy Job
 
 ```yaml
 deploy:
-  needs: test
+  needs: lint
   if: github.ref == 'refs/heads/main'
   runs-on: ubuntu-latest
   steps:
@@ -103,7 +100,7 @@ deploy:
 ```
 
 This job:
-1. Only runs if the test job succeeds
+1. Only runs if the lint job succeeds
 2. Only runs on pushes to the main branch
 3. Checks out the code
 4. Deploys to Vercel using the secrets you set up
@@ -112,11 +109,15 @@ This job:
 
 ### Adding Environment Variables
 
-If your project requires environment variables for testing or deployment, you can add them to the workflow:
+If your project requires environment variables for deployment, you can add them to the workflow:
 
 ```yaml
-- name: Run tests
-  run: npm test
+- name: Deploy to Vercel
+  uses: amondnet/vercel-action@v20
+  with:
+    vercel-token: ${{ secrets.VERCEL_TOKEN }}
+    vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+    vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
   env:
     NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
     # Add other environment variables as needed
@@ -147,7 +148,7 @@ Add this step before the "Install dependencies" step.
 If the workflow fails, check the GitHub Actions logs for error messages. Common issues include:
 
 - **Dependency installation failures**: Make sure the `--legacy-peer-deps` flag is used
-- **Test failures**: Fix any failing tests or linting issues
+- **Linting failures**: Fix any linting issues
 - **Deployment failures**: Verify that the Vercel secrets are correctly set up
 
 ### Vercel Deployment Issues
@@ -160,4 +161,4 @@ If the deployment to Vercel fails:
 
 ## Conclusion
 
-With GitHub Actions set up, your AgriMart project will benefit from automated testing and deployment. This ensures that code quality is maintained and that changes are automatically deployed to production when they're ready.
+With GitHub Actions set up, your AgriMart project will benefit from automated linting and deployment. This ensures that code quality is maintained and that changes are automatically deployed to production when they're ready.

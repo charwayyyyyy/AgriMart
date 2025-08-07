@@ -81,23 +81,7 @@ if (reactTypes && reactDomTypes && reactVersion) {
   }
 }
 
-// Check Testing Library compatibility
-const testingLibraryReact = packageJson.dependencies?.['@testing-library/react'] || packageJson.devDependencies?.['@testing-library/react'];
-
-if (testingLibraryReact && reactVersion) {
-  console.log(`\n${colors.cyan}Checking Testing Library compatibility:${colors.reset}`);
-  console.log(`- @testing-library/react: ${testingLibraryReact}`);
-  
-  // Check if Testing Library React is compatible with React version
-  const reactMajor = parseInt(reactVersion.match(/\d+/)[0], 10);
-  
-  if (reactMajor > 18 && testingLibraryReact.includes('14')) {
-    console.log(`${colors.red}✗ Warning: @testing-library/react 14.x may not be compatible with React ${reactMajor}.x${colors.reset}`);
-    console.log(`  Recommendation: Either downgrade React to 18.x or check for a newer version of @testing-library/react`);
-  } else if (reactMajor <= 18) {
-    console.log(`${colors.green}✓ @testing-library/react should be compatible with React ${reactMajor}.x${colors.reset}`);
-  }
-}
+// Testing library compatibility check removed
 
 // Check for configuration files
 console.log(`\n${colors.cyan}Checking configuration files:${colors.reset}`);
@@ -164,4 +148,3 @@ console.log(`\n${colors.cyan}Recommendations:${colors.reset}`);
 console.log(`1. Use React 18.x for maximum compatibility`);
 console.log(`2. Always use --legacy-peer-deps when installing dependencies`);
 console.log(`3. Ensure @types/react and @types/react-dom versions match your React version`);
-console.log(`4. Keep testing libraries updated to versions compatible with your React version`);

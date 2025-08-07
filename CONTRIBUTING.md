@@ -43,18 +43,17 @@ Thank you for your interest in contributing to AgriMart! This document provides 
 - Follow Redux best practices (slice pattern, selectors, etc.)
 - Minimize state updates for performance
 
-## Testing
+## Code Quality
 
-- Write unit tests for utility functions and hooks
-- Write component tests for critical UI components
-- Test edge cases and error scenarios
+- Ensure code is well-structured and maintainable
+- Follow best practices for performance optimization
 - Ensure accessibility compliance
 
 ## Pull Request Process
 
 1. Create a new branch for your feature or bugfix
 2. Make your changes following the guidelines above
-3. Run tests and ensure they pass
+3. Run linting with `npm run lint` and ensure it passes
 4. Update documentation if necessary
 5. Submit a pull request with a clear description of the changes
 
@@ -67,7 +66,7 @@ Follow the conventional commits specification:
 - `docs:` for documentation changes
 - `style:` for formatting changes
 - `refactor:` for code refactoring
-- `test:` for adding or modifying tests
+
 - `chore:` for maintenance tasks
 
 ## Code Review Process

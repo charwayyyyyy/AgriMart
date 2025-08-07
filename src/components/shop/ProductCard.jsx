@@ -1,18 +1,52 @@
 "use client";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useRef } from 'react';
 import { motion } from "framer-motion";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import { addToCart } from '@/redux/features/cartSlice';
+import { addToCart, toggleCart } from '@/redux/features/cartSlice';
+import { useCartAnimation } from '@/hooks/useCartAnimation';
+import { useCartNotification } from '@/hooks/useCartNotification';
 
 export default function ProductCard({ product }) {
   const dispatch = useDispatch();
+  const isCartOpen = useSelector(state => state.cart.isOpen);
+  const { animateFlyToCart } = useCartAnimation();
+  const { notifyAddToCart } = useCartNotification();
+  
+  // Refs for animation
+  const buttonRef = useRef(null);
+  const productCardRef = useRef(null);
 
   const handleAddToCart = () => {
-    dispatch(addToCart(product));
+    // Only run DOM operations on the client side
+    if (typeof window !== 'undefined') {
+      // Find the cart icon in the navbar
+      const cartIcon = document.querySelector('button [class*="h-6 w-6"]');
+      
+      // Animate the product flying to cart
+      if (buttonRef.current && cartIcon) {
+        animateFlyToCart(buttonRef.current, cartIcon, product.imageUrl);
+      }
+      
+      // Add to cart and show notification
+      dispatch(addToCart(product));
+      notifyAddToCart();
+      
+      // Open cart after a short delay
+      if (!isCartOpen) {
+        setTimeout(() => {
+          dispatch(toggleCart());
+        }, 1000);
+      }
+    } else {
+      // Fallback for server-side rendering
+      dispatch(addToCart(product));
+    }
   };
 
   return (
     <motion.div
+      ref={productCardRef}
       className="group relative bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 flex flex-col h-full"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -57,12 +91,14 @@ export default function ProductCard({ product }) {
             GH₵{product.price.toFixed(2)}
           </span>
           <motion.button
+            ref={buttonRef}
             onClick={handleAddToCart}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center justify-center p-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-colors duration-200"
+            className="flex items-center justify-center p-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-colors duration-200 relative overflow-hidden"
           >
             <ShoppingCartIcon className="h-5 w-5" />
+            <span className="absolute inset-0 bg-white rounded-full opacity-0 animate-ping-once"></span>
           </motion.button>
         </div>
       </div>
