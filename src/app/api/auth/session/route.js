@@ -1,6 +1,8 @@
 import { cookies } from 'next/headers';
 import { findUserById } from '@/services/authService';
 
+export const dynamic = 'force-dynamic';
+
 // Get current session
 export async function GET() {
   try {
