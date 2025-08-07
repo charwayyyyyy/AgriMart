@@ -7,7 +7,7 @@
 export const auth = {
   // Dummy methods to prevent errors if any code still tries to use Firebase auth
   signOut: async () => Promise.resolve(),
-  onAuthStateChanged: (callback) => {
+  onAuthStateChanged: () => {
     // No-op function
     return () => {};
   }

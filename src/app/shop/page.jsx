@@ -12,7 +12,7 @@ const products = [
     name: 'Fresh Tomatoes',
     description: 'Locally grown, organic tomatoes from the Volta Region',
     price: 15.99,
-    imageUrl: '/images/products/tomatoes.png',
+    imageUrl: '/images/tomatoes.png',
     farmer: 'Kwame Mensah',
     location: 'Volta Region',
     organic: true,
@@ -23,7 +23,7 @@ const products = [
     name: 'Premium Cucumber',
     description: 'High-quality cucumber from Western Region farms',
     price: 45.99,
-    imageUrl: '/images/products/cucumber.png',
+    imageUrl: '/images/cucumber.png',
     farmer: 'Ama Serwaa',
     location: 'Western Region',
     organic: true,
@@ -34,7 +34,7 @@ const products = [
     name: 'Fresh Plantains',
     description: 'Sweet plantains from Ashanti Region plantations',
     price: 12.99,
-    imageUrl: '/images/products/tomatoes.png', // Using tomatoes.png as a placeholder since plantains.jpg is not available
+    imageUrl: '/images/tomatoes.png', // Using tomatoes.png as a placeholder
     farmer: 'Yaw Owusu',
     location: 'Ashanti Region',
     organic: true,
@@ -45,7 +45,7 @@ const products = [
     name: 'Fresh Avocado',
     description: 'Lorem Ipsum',
     price: 12.99,
-    imageUrl: '/images/products/avocado.png',
+    imageUrl: '/images/avocado.png',
     farmer: 'Yaw Owusu',
     location: 'Ashanti Region',
     organic: true,
@@ -56,7 +56,7 @@ const products = [
     name: 'Fresh Lettuce',
     description: 'Lorem Ipsum',
     price: 12.99,
-    imageUrl: '/images/products/greenleaf.png',
+    imageUrl: '/images/greenleaf.png',
     farmer: 'Yaw Owusu',
     location: 'Ashanti Region',
     organic: true,
@@ -67,7 +67,7 @@ const products = [
     name: 'Fresh Tomatoes',
     description: 'Blah Blah',
     price: 12.99,
-    imageUrl: '/images/products/tomatoes.png',
+    imageUrl: '/images/tomatoes.png',
     farmer: 'Yaw Owusu',
     location: 'Ashanti Region',
     organic: true,
@@ -102,10 +102,10 @@ export default function ShopPage() {
           transition={{ duration: 0.5 }}
         >
           <h1 className="text-4xl font-bold text-gray-900 font-poppins mb-4">
-            Fresh from Ghana's Finest Farms
+            Fresh from Ghana&apos;s Finest Farms
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover premium quality produce directly from local farmers across Ghana's regions
+            Discover premium quality produce directly from local farmers across Ghana&apos;s regions
           </p>
         </motion.div>
 

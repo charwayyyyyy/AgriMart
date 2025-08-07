@@ -13,8 +13,7 @@ import {
 
 export default function ContactPage() {
   const formRef = useRef(null);
-  const mapRef = useRef(null);
-
+  
   useEffect(() => {
     // Simple fade-in animation
     const elements = document.querySelectorAll(".animate-on-load");
@@ -32,7 +31,7 @@ export default function ContactPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Form submission logic
-    console.log("Form submitted");
+    // Form data would be processed here
   };
 
   return (
@@ -55,7 +54,7 @@ export default function ContactPage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
           >
-            We're here to help and answer any questions you might have. Let's
+            We&apos;re here to help and answer any questions you might have. Let&apos;s
             connect and grow together!
           </motion.p>
         </section>
@@ -290,24 +289,24 @@ export default function ContactPage() {
                   Connect With Us
                 </h3>
                 <div className="flex space-x-4 pl-12">
-                  <a
-                    href="#"
+                  <button
                     className="bg-green-100 p-3 rounded-full text-green-700 hover:text-white hover:bg-green-600 transition-colors"
+                    aria-label="Facebook"
                   >
                     <FaFacebook size={18} />
-                  </a>
-                  <a
-                    href="#"
+                  </button>
+                  <button
                     className="bg-green-100 p-3 rounded-full text-green-700 hover:text-white hover:bg-green-600 transition-colors"
+                    aria-label="Twitter"
                   >
                     <FaTwitter size={18} />
-                  </a>
-                  <a
-                    href="#"
+                  </button>
+                  <button
                     className="bg-green-100 p-3 rounded-full text-green-700 hover:text-white hover:bg-green-600 transition-colors"
+                    aria-label="Instagram"
                   >
                     <FaInstagram size={18} />
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>

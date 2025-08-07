@@ -104,7 +104,13 @@ export default function Input({
           disabled={disabled}
           required={required}
           aria-invalid={error ? 'true' : 'false'}
-          aria-describedby={error ? `${inputId}-error` : helperText ? `${inputId}-description` : undefined}
+          aria-describedby={
+            error 
+              ? `${inputId}-error` 
+              : helperText 
+                ? `${inputId}-description` 
+                : undefined
+          }
           className={inputClasses}
         />
       </div>

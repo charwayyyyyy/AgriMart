@@ -69,19 +69,19 @@ const TimelineItem = ({ year, event }) => {
 export default function AboutPage() {
   const values = [
     {
-      symbol: "/ghana-pattern.svg",
+      symbol: "/images/sustainability.jpg",
       title: "Sustainability",
       description:
-        "We prioritize eco-friendly farming practices that protect Ghana's rich agricultural heritage.",
+        "We prioritize eco-friendly farming practices that protect Ghana&apos;s rich agricultural heritage.",
     },
     {
-      symbol: "/ghana-pattern.svg",
+      symbol: "/images/community.jpg",
       title: "Community",
       description:
         "Building strong relationships with local farmers to create shared prosperity.",
     },
     {
-      symbol: "/ghana-pattern.svg",
+      symbol: "/images/quality.jpg",
       title: "Quality",
       description:
         "Delivering the freshest, highest quality produce from farm to your table.",
@@ -90,17 +90,17 @@ export default function AboutPage() {
 
   const team = [
     {
-      image: "/testimonial avatar.png",
+      image: "/images/farmers/testimonialavatar.png",
       name: "Kwame Asante",
       role: "Founder & CEO",
     },
     {
-      image: "/team2.jpg",
+      image: "/images/farmers/testimonialavatar.png",
       name: "Ama Osei",
       role: "Head of Farmer Relations",
     },
     {
-      image: "/team3.jpg",
+      image: "/images/farmers/testimonialavatar.png",
       name: "Kofi Mensah",
       role: "Product Manager",
     },
@@ -124,7 +124,7 @@ export default function AboutPage() {
           <h1 className="text-4xl font-bold text-green-800 mb-4">Our Story</h1>
           <div className="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            AgriMart was born from a deep respect for Ghana's farming traditions
+            AgriMart was born from a deep respect for Ghana&apos;s farming traditions
             and a vision to connect urban consumers directly with rural farmers.
             Our mission is to create sustainable livelihoods for farmers while
             providing fresh, quality produce to our customers.
@@ -137,19 +137,19 @@ export default function AboutPage() {
               Rooted in Ghanaian Heritage
             </h2>
             <p className="text-gray-600 mb-4">
-              Drawing inspiration from centuries of agricultural wisdom, we've
-              built a platform that honors the hard work of Ghana's farmers
+              Drawing inspiration from centuries of agricultural wisdom, we&apos;ve
+              built a platform that honors the hard work of Ghana&apos;s farmers
               while embracing modern technology to improve efficiency and reach.
             </p>
             <p className="text-gray-600">
-              The Adinkra symbol of 'Sankofa' - learning from the past to build
+              The Adinkra symbol of &apos;Sankofa&apos; - learning from the past to build
               the future - guides our approach as we blend customs and tradition with
               modernity and innovation.
             </p>
           </div>
           <div className="bg-green-100 rounded-lg overflow-hidden aspect-video relative">
             <Image
-              src="/farm-heritage.jpg"
+              src="/images/ghanaianfarming.jpg"
               alt="Ghanaian farming heritage"
               fill
               className="object-cover"
@@ -166,9 +166,9 @@ export default function AboutPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {values.map((value, index) => (
+          {values.map((value) => (
             <ValueCard
-              key={index}
+              key={value.title}
               symbol={value.symbol}
               title={value.title}
               description={value.description}
@@ -185,15 +185,15 @@ export default function AboutPage() {
           </h2>
           <div className="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            A passionate group of individuals dedicated to transforming Ghana's
+            A passionate group of individuals dedicated to transforming Ghana&apos;s
             agricultural sector.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 justify-items-center">
-          {team.map((member, index) => (
+          {team.map((member) => (
             <TeamMember
-              key={index}
+              key={member.name}
               image={member.image}
               name={member.name}
               role={member.role}
@@ -212,9 +212,9 @@ export default function AboutPage() {
         </div>
 
         <div className="max-w-2xl mx-auto">
-          {milestones.map((milestone, index) => (
+          {milestones.map((milestone) => (
             <TimelineItem
-              key={index}
+              key={`${milestone.year}-${milestone.event}`}
               year={milestone.year}
               event={milestone.event}
             />

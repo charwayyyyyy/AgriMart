@@ -199,7 +199,7 @@ export default function ExamplesPage() {
           {isSubmitted ? (
             <div className="text-center py-8">
               <h3 className="text-xl font-medium text-green-600 mb-2">Thank you for your message!</h3>
-              <p className="mb-4">We'll get back to you as soon as possible.</p>
+              <p className="mb-4">We&apos;ll get back to you as soon as possible.</p>
               <Button onClick={() => setIsSubmitted(false)}>Send Another Message</Button>
             </div>
           ) : (

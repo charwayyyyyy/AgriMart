@@ -78,10 +78,10 @@ export default function AuthForm() {
       >
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            {isLogin ? 'Welcome Back!' : 'Join AgriMart'}
+            {isLogin ? &apos;Welcome Back!&apos; : &apos;Join AgriMart&apos;}
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            {isLogin ? "Access your farm-fresh products" : "Start your farm-to-table journey"}
+            {isLogin ? &quot;Access your farm-fresh products&quot; : &quot;Start your farm-to-table journey&quot;}
           </p>
         </div>
 
@@ -129,7 +129,7 @@ export default function AuthForm() {
               disabled={loading}
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50"
             >
-              {loading ? 'Processing...' : (isLogin ? 'Sign In' : 'Sign Up')}
+              {loading ? &apos;Processing...&apos; : isLogin ? &apos;Sign In&apos; : &apos;Sign Up&apos;}
             </motion.button>
 
             <motion.button
@@ -150,7 +150,7 @@ export default function AuthForm() {
             onClick={() => setIsLogin(!isLogin)}
             className="text-sm text-green-600 hover:text-green-500"
           >
-            {isLogin ? "Need an account? Sign up" : "Already have an account? Sign in"}
+            {isLogin ? &quot;Need an account? Sign up&quot; : &quot;Already have an account? Sign in&quot;}
           </button>
         </div>
 

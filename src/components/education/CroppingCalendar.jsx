@@ -1,5 +1,4 @@
 'use client';
-import { motion } from 'framer-motion';
 
 export default function CroppingCalendar() {
   // Sample cropping calendars
@@ -95,7 +94,7 @@ export default function CroppingCalendar() {
             <tbody className="bg-white divide-y divide-gray-200">
               {croppingCalendars.flatMap((calendar) => 
                 calendar.seasons.map((season, index) => (
-                  <tr key={`${calendar.crop}-${index}`} className="hover:bg-ghana-green-50">
+                  <tr key={`${calendar.crop}-${season.name}`} className="hover:bg-ghana-green-50">
                     {index === 0 ? (
                       <td rowSpan={calendar.seasons.length} className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 align-top">
                         {calendar.crop}
@@ -123,7 +122,7 @@ export default function CroppingCalendar() {
         </div>
       </div>
       <div className="mt-8 bg-ghana-green-50 p-6 rounded-lg">
-        <h3 className="text-lg font-semibold text-ghana-green-700 mb-4">Understanding Ghana's Agricultural Seasons</h3>
+        <h3 className="text-lg font-semibold text-ghana-green-700 mb-4">Understanding Ghana&apos;s Agricultural Seasons</h3>
         <p className="text-gray-700 mb-4">
           Ghana generally has two main growing seasons in the south: the major season from March/April to July/August and the minor season from September to November. 
           The northern regions typically have one main growing season from May to September.

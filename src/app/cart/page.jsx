@@ -1,14 +1,12 @@
 'use client';
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { useSelector, useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ShoppingCartIcon, XMarkIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { removeFromCart, updateQuantity } from '@/redux/features/cartSlice';
 
 export default function CartPage() {
-  const router = useRouter();
   const dispatch = useDispatch();
   const cartItems = useSelector(state => state.cart.items);
   const subtotal = useSelector(state => state.cart.subtotal);
@@ -39,7 +37,13 @@ export default function CartPage() {
           {cartItems.length === 0 ? (
             <div className="text-center py-12">
               <div className="flex justify-center mb-4">
-                <img src="/images/icons/empty-cart.svg" alt="Empty cart" className="w-24 h-24 opacity-50" />
+                <Image 
+                  src="/images/icons/empty-cart.svg" 
+                  alt="Empty cart" 
+                  width={96} 
+                  height={96} 
+                  className="opacity-50" 
+                />
               </div>
               <h2 className="text-xl font-medium text-gray-600 mb-4">Your cart is empty</h2>
               <p className="text-gray-500 mb-8">Looks like you haven't added any products to your cart yet.</p>
@@ -69,9 +73,11 @@ export default function CartPage() {
                         transition={{ duration: 0.3 }}
                       >
                         <div className="flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden w-full sm:w-24 h-24 mb-4 sm:mb-0">
-                          <img
+                          <Image
                             src={item.image}
                             alt={item.name}
+                            width={96}
+                            height={96}
                             className="w-full h-full object-cover object-center"
                           />
                         </div>

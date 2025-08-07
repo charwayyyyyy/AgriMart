@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ShoppingCartIcon, HeartIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { addToCart } from '@/redux/features/cartSlice';
 
@@ -81,7 +82,7 @@ export default function WishlistPage() {
           transition={{ duration: 0.5 }}
         >
           <h1 className="text-3xl font-bold text-ghana-green-700 font-poppins">Your Wishlist</h1>
-          <p className="mt-2 text-gray-600">Save your favorite products from Ghana's finest farms</p>
+          <p className="mt-2 text-gray-600">Save your favorite products from Ghana&apos;s finest farms</p>
         </motion.div>
 
         {wishlistItems.length === 0 ? (
@@ -111,9 +112,11 @@ export default function WishlistPage() {
                 transition={{ duration: 0.3 }}
               >
                 <div className="relative">
-                  <img
+                  <Image
                     src={item.imageUrl}
                     alt={item.name}
+                    width={400}
+                    height={300}
                     className="h-48 w-full object-cover object-center"
                   />
                   {item.organic && (
@@ -134,9 +137,11 @@ export default function WishlistPage() {
                   <p className="mt-1 text-sm text-gray-500">{item.description}</p>
                   
                   <div className="mt-2 flex items-center space-x-2">
-                    <img
+                    <Image
                       src="/images/icons/ghana-pattern.svg"
                       alt="Location icon"
+                      width={16}
+                      height={16}
                       className="h-4 w-4"
                     />
                     <span className="text-sm text-gray-600">{item.location}</span>

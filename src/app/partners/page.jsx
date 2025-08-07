@@ -88,7 +88,7 @@ export default function PartnersPage() {
             Our Partners
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            We collaborate with leading organizations across Ghana's agricultural ecosystem to support farmers and deliver the best products to consumers
+            We collaborate with leading organizations across Ghana&apos;s agricultural ecosystem to support farmers and deliver the best products to consumers
           </p>
         </motion.div>
 
@@ -161,7 +161,7 @@ export default function PartnersPage() {
                     <p className="text-sm text-gray-600">{testimonial.position}</p>
                   </div>
                 </div>
-                <p className="text-gray-700 italic">"{testimonial.quote}"</p>
+                <p className="text-gray-700 italic">&ldquo;{testimonial.quote}&rdquo;</p>
               </motion.div>
             ))}
           </div>
@@ -177,8 +177,8 @@ export default function PartnersPage() {
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-2xl font-bold text-ghana-green-700 mb-4">Become a Partner</h2>
             <p className="text-gray-600 mb-6">
-              Join our growing network of agricultural partners and help us transform Ghana's farming sector. 
-              Whether you're a farmers' association, an agri-tech company, or a government agency, we'd love to collaborate with you.
+              Join our growing network of agricultural partners and help us transform Ghana&apos;s farming sector. 
+              Whether you&apos;re a farmers&apos; association, an agri-tech company, or a government agency, we&apos;d love to collaborate with you.
             </p>
             <Link href="/contact">
               <motion.button

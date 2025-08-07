@@ -13,7 +13,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "AgriMart - Fresh from Ghana's Finest Farms",
+  title: "AgriMart - Fresh from Ghana&apos;s Finest Farms",
   description: "Connect with local Ghanaian farmers, purchase fresh produce, and support sustainable agriculture.",
   keywords: "Ghana, agriculture, farmers market, organic produce, farm-to-table, e-commerce",
 };

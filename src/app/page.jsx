@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import Image from "next/image";
 import Testimonials from "@/components/home/Testimonials";
 
 // sample featured products
@@ -9,7 +9,7 @@ const featuredProducts = [
     id: 1,
     name: "Premium Cocoa Beans",
     price: 150.0,
-    image: "/products/cocoabeans.jpg",
+    image: "/images/premiumcocoabeans.jpg",
     category: "Cash Crops",
     region: "Western Region",
   },
@@ -17,7 +17,7 @@ const featuredProducts = [
     id: 2,
     name: "Organic Plantain",
     price: 25.0,
-    image: "/products/plantain.jpg",
+    image: "/images/organicplantainbundle.jpg",
     category: "Fruits",
     region: "Ashanti Region",
   },
@@ -25,7 +25,7 @@ const featuredProducts = [
     id: 3,
     name: "Fresh Garden Eggs",
     price: 10.0,
-    image: "/products/garden-eggs.jpg",
+    image: "/images/freshgardeneggs.jpg",
     category: "Vegetables",
     region: "Volta Region",
   },
@@ -79,7 +79,7 @@ export default function Home() {
                   </motion.a>
                 </div>
                 <h1 className="mt-10 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                  Fresh from Ghana's Finest Farms
+                  Fresh from Ghana&apos;s Finest Farms
                 </h1>
                 <p className="mt-6 text-lg leading-8 text-gray-600">
                   Connect directly with local farmers, access fresh produce, and
@@ -136,9 +136,11 @@ export default function Home() {
                       <div className="px-6 pt-6 pb-14">
                         {/* Placeholder for featured product image */}
                         <div className="h-[400px] rounded-md bg-white/5 p-4">
-                          <img
-                            src="/hero-image.jpg"
+                          <Image
+                            src="/images/homepagefarmproduce.jpg"
                             alt="Farm produce"
+                            width={800}
+                            height={400}
                             className="h-full w-full object-cover rounded-md"
                           />
                         </div>
@@ -173,9 +175,11 @@ export default function Home() {
                 transition={{ duration: 0.2 }}
               >
                 <div className="relative w-full">
-                  <img
+                  <Image
                     src={product.image}
                     alt={product.name}
+                    width={600}
+                    height={400}
                     className="aspect-[16/9] w-full object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
                   />
                   <div className="absolute inset-0 ring-1 ring-inset ring-gray-900/10" />

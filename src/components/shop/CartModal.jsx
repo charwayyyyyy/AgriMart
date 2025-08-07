@@ -5,6 +5,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from 'next/link';
+import Image from 'next/image';
 import { removeFromCart, updateQuantity } from '@/redux/features/cartSlice';
 import { useCartAnimation } from '@/hooks/useCartAnimation';
 import { useCartNotification } from '@/hooks/useCartNotification';
@@ -104,7 +105,7 @@ export default function CartModal({ open, setOpen }) {
 
                       <div className="mt-8">
                         <div className="flow-root">
-                          <ul role="list" className="-my-6 divide-y divide-gray-200">
+                          <ul className="-my-6 divide-y divide-gray-200">
                             {cartItems.map((item) => (
                               <motion.li
                                 key={item.id}
@@ -115,9 +116,11 @@ export default function CartModal({ open, setOpen }) {
                                 ref={el => cartItemRefs.current[item.id] = el}
                               >
                                 <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                  <img
+                                  <Image
                                     src={item.imageUrl}
                                     alt={item.name}
+                                    width={96}
+                                    height={96}
                                     className="h-full w-full object-cover object-center"
                                   />
                                 </div>
@@ -191,20 +194,32 @@ export default function CartModal({ open, setOpen }) {
                         <p className="text-sm text-ghana-green-600 text-center italic">Free delivery for orders above GH₵100</p>
                       </div>
                       <div className="mt-6 space-y-3">
-                        {isAuthenticated ? (
-                          cartItems.length > 0 ? (
-                            <>
-                              <Link href="/cart">
-                                <motion.button
-                                  whileHover={{ scale: 1.02 }}
-                                  whileTap={{ scale: 0.98 }}
-                                  className="flex w-full items-center justify-center rounded-lg border-2 border-ghana-green-400 bg-ghana-green-500 px-6 py-3 text-base font-bold text-white shadow-md hover:bg-ghana-green-600 hover:border-ghana-green-500 transition-all duration-300"
-                                  onClick={() => setOpen(false)}
-                                >
-                                  View Cart
-                                </motion.button>
-                              </Link>
-                              <Link href="/checkout">
+                        {!isAuthenticated && (
+                          <Link href="/auth">
+                            <motion.button
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
+                              className="flex w-full items-center justify-center rounded-lg border-2 border-ghana-green-400 bg-ghana-green-500 px-6 py-3 text-base font-bold text-white shadow-md hover:bg-ghana-green-600 hover:border-ghana-green-500 transition-all duration-300"
+                              onClick={() => setOpen(false)}
+                            >
+                              Sign In to Checkout
+                            </motion.button>
+                          </Link>
+                        )}
+                        
+                        {isAuthenticated && cartItems.length > 0 && (
+                          <>
+                            <Link href="/cart">
+                              <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="flex w-full items-center justify-center rounded-lg border-2 border-ghana-green-400 bg-ghana-green-500 px-6 py-3 text-base font-bold text-white shadow-md hover:bg-ghana-green-600 hover:border-ghana-green-500 transition-all duration-300"
+                                onClick={() => setOpen(false)}
+                              >
+                                View Cart
+                              </motion.button>
+                            </Link>
+                            <Link href="/checkout">
                                 <motion.button
                                   whileHover={{ scale: 1.02 }}
                                   whileTap={{ scale: 0.98 }}
@@ -215,31 +230,23 @@ export default function CartModal({ open, setOpen }) {
                                 </motion.button>
                               </Link>
                             </>
-                          ) : (
+                          )}
+                          
+                          {isAuthenticated && cartItems.length === 0 && (
                             <div className="text-center space-y-4">
-                              <img
+                              <Image
                                 src="/images/icons/empty-cart.svg"
                                 alt="Empty Market Basket"
-                                className="mx-auto w-48 h-48"
+                                width={192}
+                                height={192}
+                                className="mx-auto"
                               />
                               <div className="space-y-2">
                                 <p className="text-lg font-medium text-ghana-green-700">Your Market Basket is Empty</p>
                                 <p className="text-sm text-ghana-green-600">Add some fresh farm products to get started!</p>
                               </div>
                             </div>
-                          )
-                        ) : (
-                          <Link href="/auth">
-                            <motion.button
-                              whileHover={{ scale: 1.02 }}
-                              whileTap={{ scale: 0.98 }}
-                              className="flex w-full items-center justify-center rounded-lg border-2 border-ghana-green-400 bg-ghana-green-500 px-6 py-3 text-base font-bold text-white shadow-md hover:bg-ghana-green-600 hover:border-ghana-green-500 transition-all duration-300"
-                              onClick={() => setOpen(false)}
-                            >
-                              Sign in to Checkout
-                            </motion.button>
-                          </Link>
-                        )}
+                          )}
                       </div>
                       <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                         <p>

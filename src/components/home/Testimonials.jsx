@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from 'next/image';
 
 const testimonials = [
   {
@@ -8,7 +9,7 @@ const testimonials = [
     name: "Kwame Mensah",
     role: "Organic Vegetable Farmer",
     location: "Ashanti Region",
-    image: "/farmers/kwame.jpg",
+    image: "/images/farmers/testimonialavatar.png",
     content:
       "AgriMart has transformed how I sell my organic vegetables. I now reach customers across Ghana who value fresh, chemical-free produce. The platform has helped me grow my farm business significantly.",
   },
@@ -17,7 +18,7 @@ const testimonials = [
     name: "Maud Susu",
     role: "Organic Vegetable Farmer",
     location: "Volta Region",
-    image: "/farmers/maud.jpg",
+    image: "/images/farmers/testimonialavatar.png",
     content:
       "AgriMart has transformed how I sell my organic vegetables. I now reach customers across Ghana who value fresh, chemical-free produce. The platform has helped me grow my farm business significantly.",
   },
@@ -104,10 +105,12 @@ export default function Testimonials() {
               >
                 <div className="h-full flex flex-col lg:flex-row">
                   <div className="lg:w-1/3 flex-shrink-0 flex items-center justify-center p-6 lg:p-8 bg-gray-50">
-                    <img
+                    <Image
                       className="h-32 w-32 sm:h-40 sm:w-40 rounded-full object-cover border-4 border-white shadow-md"
                       src={testimonials[currentIndex].image}
                       alt={testimonials[currentIndex].name}
+                      width={160}
+                      height={160}
                     />
                   </div>
                   <div className="flex-1 p-6 lg:p-8 flex flex-col justify-center">

@@ -88,7 +88,7 @@ export default function OrdersPage() {
           transition={{ duration: 0.5 }}
         >
           <h1 className="text-3xl font-bold text-ghana-green-700 font-poppins">Your Orders</h1>
-          <p className="mt-2 text-gray-600">Track and manage your orders from Ghana's finest farms</p>
+          <p className="mt-2 text-gray-600">Track and manage your orders from Ghana&apos;s finest farms</p>
         </motion.div>
 
         {orders.length === 0 ? (
@@ -101,7 +101,7 @@ export default function OrdersPage() {
               className="w-32 h-32 mx-auto mb-4"
             />
             <h2 className="text-xl font-semibold text-ghana-green-700 mb-2">No Orders Yet</h2>
-            <p className="text-gray-600 mb-6">You haven't placed any orders yet.</p>
+            <p className="text-gray-600 mb-6">You haven&apos;t placed any orders yet.</p>
             <Link href="/shop">
               <motion.button
                 whileHover={{ scale: 1.02 }}
@@ -141,11 +141,9 @@ export default function OrdersPage() {
                     </div>
                     <div className="flex items-center space-x-4">
                       <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                        order.status === 'Delivered' 
-                          ? 'bg-green-100 text-green-800' 
-                          : order.status === 'Processing' 
-                            ? 'bg-blue-100 text-blue-800'
-                            : 'bg-yellow-100 text-yellow-800'
+                        order.status === 'Delivered' ? 'bg-green-100 text-green-800' : 
+                        order.status === 'Processing' ? 'bg-blue-100 text-blue-800' :
+                        'bg-yellow-100 text-yellow-800'
                       }`}>
                         {order.status}
                       </span>

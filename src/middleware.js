@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 // This function can be marked `async` if using `await` inside
-export function middleware(request) {
+export function middleware() {
   // Continue to the page - authentication will be handled client-side
   // through the session API endpoint
   return NextResponse.next();
