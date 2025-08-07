@@ -29,23 +29,6 @@ const featuredProducts = [
     category: "Vegetables",
     region: "Volta Region",
   },
-  {
-    id: 4,
-    name: "Fresh Kontomire",
-    price: 10.0,
-    image: "/products/kontomire.jpg",
-    category: "Vegetables",
-    region: "Eastern Region",
-  },
-  {
-    id: 5,
-    name: "Yam Tubers",
-    price: 10.0,
-    image: "/products/yam-tubers.jpg",
-    category: "Vegetables",
-    region: "Greater Accea Region",
-  },
-
   //add more products
 ];
 
